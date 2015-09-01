@@ -1,0 +1,32 @@
+<section id="words-exercises-view" class="mainbar">
+    <section class="matter">
+        <div class="container">
+            <div class="score"> {{vm.score}} / {{vm.nbElement}}</div>
+            <chrono duration="vm.duration" trigger="vm.start" finish="vm.DisplayResult()" style="float:right;margin-right:60px;" />
+            <div class="row config" ng-show="vm.showConfig">
+                <div class="col-md-3">
+                    <label for="txtNbWords">
+                        Nombre de mots à générer :
+                        <input id="txtNbWords" type="number" ng-model="vm.nbElement">
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <label for="txtDuration">
+                        Temps de mémorisation :
+                        <input id="txtDuration" type="number" ng-model="vm.duration">
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <button ng-click="vm.SetRandomWords();vm.start = true">Go!</button>
+                </div>
+            </div>
+            <div class="row list-words">
+                <ul class="col-md-12" ng-repeat="word in vm.words">
+                    <li ng-hide="vm.finish" style="color : {{word.color}}">{{word.word}}</li>
+                    <li ng-show="vm.finish"><input type="text" ng-model="word.result"> {{word.word}}</li>
+                </ul>
+            </div>
+            <button ng-show="vm.finish" ng-click="vm.CalculateResults()">Voir mes résultats</button>
+        </div>
+    </section>
+</section>
