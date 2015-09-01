@@ -16,8 +16,8 @@ namespace app.layout {
         isBusy = true;
         navline = {
             title: this.config.appTitle,
-            text: 'Created by John Papa',
-            link: 'http://twitter.com/john_papa'
+            text: '',
+            link: ''
         };
 
         hideSplash() {

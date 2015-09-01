@@ -13,8 +13,8 @@ var app;
                 this.isBusy = true;
                 this.navline = {
                     title: this.config.appTitle,
-                    text: 'Created by John Papa',
-                    link: 'http://twitter.com/john_papa'
+                    text: '',
+                    link: ''
                 };
                 this.logger.success(config.appTitle + ' loaded!', null);
                 this.hideSplash();

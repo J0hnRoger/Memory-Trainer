@@ -40,6 +40,8 @@ var app;
                         word.color = "red";
                 });
                 this.finish = false;
+                this.showConfig = true;
+                this.chrono.reset();
             };
             WordsController.$inject = ['logger', 'wordsGeneratorService'];
             return WordsController;

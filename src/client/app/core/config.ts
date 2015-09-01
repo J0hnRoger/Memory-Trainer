@@ -2,8 +2,8 @@ namespace app.core {
     'use strict';
 
     var config = {
-        appErrorPrefix: '[helloworld Error] ',
-        appTitle: 'helloworld'
+        appErrorPrefix: '[Memory Trainer Error] ',
+        appTitle: 'Memory Trainer'
     };
 
     angular

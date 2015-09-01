@@ -52,6 +52,8 @@ namespace app.words {
                     word.color = "red"; 
             });
             this.finish = false;
+            this.showConfig = true
+            this.chrono.reset();
         }
     }
 
