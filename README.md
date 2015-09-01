@@ -1,19 +1,10 @@
 # Visual Studio Code Demo with Angular, TypeScript, Node, and HotTowel
 
-As seen at [//Build 2015](http://channel9.msdn.com/Events/Build/2015/3-680) presented by Erich Gamma, Chris Dias and John Papa.
+Testing of (John Papa's SPA)["https://github.com/johnpapa/hottowel-angular-typescript"] with TypeScript for developing demo application.
 
-## Prerequisites
+## Memory Trainer
 
-1. Install [Node.js](http://nodejs.org) 
- - on OSX use [homebrew](http://brew.sh) `brew install node`
- - on Windows use [chocolatey](https://chocolatey.org/) `choco install nodejs`
+I recently discovered Mnemonics Technics like the Memory Palace, or the Dominic System. So I decided to develop an application for train these method. 
 
-2. Install Yeoman `npm install -g yo`
-
-3. Install these NPM packages globally
-
-    ```bash
-    npm install -g bower gulp nodemon
-    ```
-
-    >Refer to these [instructions on how to not require sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md)
+## Features
+1. Words Training : Generate French Random List of Words
