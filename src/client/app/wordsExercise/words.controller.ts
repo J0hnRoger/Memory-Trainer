@@ -9,7 +9,7 @@ namespace app.words {
         SetRandomWords : (nbWord : number) => void;
         showConfig : boolean;
         score : number;
-        chrono : app.words.ChronoDirective
+        chrono : { start : Function, reset: Function };        
 	}
     
     export class WordsController implements IExercice {
@@ -22,7 +22,7 @@ namespace app.words {
         finish :boolean = false;
         result:boolean = false;
         score:number = 0;
-        chrono : app.words.ChronoDirective;
+        chrono : { start : Function, reset: Function };
          
         static $inject: Array<string> = ['logger', 'wordsGeneratorService'];
         constructor(private logger: blocks.logger.Logger, private wordsGenerator : app.words.WordsGeneratorService ) {}
