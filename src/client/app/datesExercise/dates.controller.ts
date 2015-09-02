@@ -12,6 +12,8 @@ namespace app.dates {
 		display : boolean = true;
 		chrono : any;
 		score : number = 0;
+		themes : string [] =  ["Indépendance des états-unis", "Révolution Française", "Histoire du Hip Hop"];
+		intro : boolean = true;
 		
 		static $inject: Array<string> = ['logger', 'HistoricDatesService'];
         constructor(private logger: blocks.logger.Logger, private historicDatesFactory : app.dates.HistoricDatesService) {
@@ -20,6 +22,8 @@ namespace app.dates {
 					this.events = data;
 				}
 			)
+			
+			
 		}
 		
 		CalculateResults() {

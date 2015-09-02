@@ -7,8 +7,16 @@
                     <chrono duration="vm.duration" controls="vm.chrono" finish="vm.display=false" style="float:right;margin-right:60px;" />
                     <h1 id="timeline">{{vm.title}}</h1>
                     <button ng-show="vm.display" class="btn btn-default btn-dates-go" ng-click="vm.chrono.start();" >Tester</button>
-                </div> 
-                <ul class="timeline" ng-repeat="event in vm.events">
+                </div>
+                <div class="intro" ng-show="vm.intro">
+                    <h3>Revisez vos dates, choisissez une période : </h3>
+                    <div class="history-themes row">
+                        <div class="panel panel-info col-md-3" ng-repeat="theme in vm.themes" ng-click="vm.intro = false">
+                            <h6>{{theme}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <ul class="timeline" ng-repeat="event in vm.events" ng-hide="vm.intro">
                     <li ng-show="vm.display" ng-class-even="'timeline-inverted'">
                         <div class="timeline-badge"> <span ng-hide="vm.mode.test">{{event.date}}</span></div>
                         <div class="timeline-panel">

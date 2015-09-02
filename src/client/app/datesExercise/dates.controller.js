@@ -12,6 +12,8 @@ var app;
                 this.duration = 5;
                 this.display = true;
                 this.score = 0;
+                this.themes = ["Indépendance des états-unis", "Révolution Française", "Histoire du Hip Hop"];
+                this.intro = true;
                 historicDatesFactory.getHistoryThemes().then(function (data) {
                     _this.events = data;
                 });
