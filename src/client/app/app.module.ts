@@ -7,6 +7,7 @@ namespace app {
         'app.admin',
         'app.dashboard',
         'app.layout',
-        'app.words'
+        'app.words',
+        'app.dates'
     ]);
 }

@@ -22,8 +22,19 @@
             </div>
             <div class="row list-words">
                 <ul class="col-md-12" ng-repeat="word in vm.words">
-                    <li ng-hide="vm.finish" style="color : {{word.color}}">{{word.word}}</li>
-                    <li ng-show="vm.finish"><input type="text" ng-model="word.result"> <span ng-hide="vm.finish">{{word.word}}</span></li>
+                    <li ng-hide="vm.finish || vm.result" style="color : {{word.color}}">
+                        {{word.word}} 
+                    </li>
+                    <li ng-show="vm.result"  style="color:{{word.color}}"> 
+                        {{word.result}} 
+                        <i class="fa" 
+                            ng-class="(word.isCorrect) ? 'fa-check' : 'fa-times' ">
+                        </i>                       
+                        <span style="color : black">   
+                            ( {{word.word}} )
+                        </span>
+                    </li>
+                    <li ng-show="vm.finish"><input type="text" ng-model="word.result"></li>
                 </ul>
             </div>
             <button type="button" class="btn btn-success" ng-show="vm.finish" ng-click="vm.CalculateResults()">Voir mes résultats</button>

@@ -12,6 +12,7 @@ var app;
                 this.nbElement = 10;
                 this.showConfig = true;
                 this.finish = false;
+                this.result = false;
                 this.score = 0;
             }
             //Methods
@@ -24,6 +25,7 @@ var app;
                         that.words.push({ "word": word, "color": "black" });
                     });
                     that.showConfig = false;
+                    that.result = false;
                 });
             };
             WordsController.prototype.DisplayResult = function () {
@@ -32,14 +34,17 @@ var app;
             WordsController.prototype.CalculateResults = function () {
                 var that = this;
                 angular.forEach(this.words, function (word) {
+                    word.isCorrect = false;
                     if (word.word == word.result) {
                         that.score = that.score + 1;
                         word.color = "green";
+                        word.isCorrect = true;
                     }
                     else
                         word.color = "red";
                 });
                 this.finish = false;
+                this.result = true;
                 this.showConfig = true;
                 this.chrono.reset();
             };

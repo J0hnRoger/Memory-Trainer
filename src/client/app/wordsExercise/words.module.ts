@@ -1,4 +1,4 @@
-namespace app.dashboard {
+namespace app.words {
     'use strict';
 
     angular.module('app.words', [

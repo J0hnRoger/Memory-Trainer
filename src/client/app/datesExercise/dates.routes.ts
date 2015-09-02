@@ -1,4 +1,4 @@
-namespace app.words {
+namespace app.dates {
     'use strict';
 
     angular
@@ -17,16 +17,16 @@ namespace app.words {
     function getStates() {
         return [
             {
-                state: 'words',
+                state: 'dates',
                 config: {
-                    url: '/words',
-                    templateUrl: 'app/wordsExercise/wordsExercise.html',
-                    controller: 'WordsController',
+                    url: '/dates',
+                    templateUrl: 'app/datesExercise/datesExercise.html',
+                    controller: 'DatesController',
                     controllerAs: 'vm',
-                    title: 'words',
+                    title: 'dates',
                     settings: {
                         nav: 3,
-                        content: '<i class="fa fa-list"></i> Words'
+                        content: '<i class="fa fa-history"></i> Historic Dates'
                     }
                 }
             }

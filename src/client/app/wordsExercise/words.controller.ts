@@ -19,6 +19,7 @@ namespace app.words {
         wordGenerator : app.words.WordsGeneratorService;
         showConfig : boolean = true;
         finish :boolean = false;
+        result:boolean = false;
         score:number = 0;
          
         static $inject: Array<string> = ['logger', 'wordsGeneratorService'];
@@ -34,6 +35,7 @@ namespace app.words {
                         that.words.push({"word" : word, "color" : "black"});
                     })
                     that.showConfig = false;
+                    that.result = false;
                 });
         }
         
@@ -44,15 +46,18 @@ namespace app.words {
         CalculateResults() {
             var that = this;
             angular.forEach(this.words, function(word){
+                word.isCorrect = false;
                 if (word.word == word.result){
                     that.score = that.score + 1;
-                    word.color = "green";                    
+                    word.color = "green";
+                    word.isCorrect = true;                    
                 }
                 else
                     word.color = "red"; 
             });
             this.finish = false;
-            this.showConfig = true
+            this.result = true;
+            this.showConfig = true;
             this.chrono.reset();
         }
     }

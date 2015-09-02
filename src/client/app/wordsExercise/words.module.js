@@ -1,12 +1,12 @@
 var app;
 (function (app) {
-    var dashboard;
-    (function (dashboard) {
+    var words;
+    (function (words) {
         'use strict';
         angular.module('app.words', [
             'app.core',
             'app.widgets'
         ]);
-    })(dashboard = app.dashboard || (app.dashboard = {}));
+    })(words = app.words || (app.words = {}));
 })(app || (app = {}));
 //# sourceMappingURL=words.module.js.map

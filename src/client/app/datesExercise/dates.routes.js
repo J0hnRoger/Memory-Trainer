@@ -1,7 +1,7 @@
 var app;
 (function (app) {
-    var words;
-    (function (words) {
+    var dates;
+    (function (dates) {
         'use strict';
         angular
             .module('app.words')
@@ -17,21 +17,21 @@ var app;
         function getStates() {
             return [
                 {
-                    state: 'words',
+                    state: 'dates',
                     config: {
-                        url: '/words',
-                        templateUrl: 'app/wordsExercise/wordsExercise.html',
-                        controller: 'WordsController',
+                        url: '/dates',
+                        templateUrl: 'app/datesExercise/datesExercise.html',
+                        controller: 'DatesController',
                         controllerAs: 'vm',
-                        title: 'words',
+                        title: 'dates',
                         settings: {
                             nav: 3,
-                            content: '<i class="fa fa-list"></i> Words'
+                            content: '<i class="fa fa-history"></i> Historic Dates'
                         }
                     }
                 }
             ];
         }
-    })(words = app.words || (app.words = {}));
+    })(dates = app.dates || (app.dates = {}));
 })(app || (app = {}));
-//# sourceMappingURL=words.route.js.map
+//# sourceMappingURL=dates.routes.js.map
