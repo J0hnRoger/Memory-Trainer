@@ -17,15 +17,13 @@ var app;
             }
             //Methods
             WordsController.prototype.SetRandomWords = function () {
-                var that = this;
+                var _this = this;
+                this.words = [];
                 this.wordsGenerator.getRandomWords(this.nbElement)
                     .then(function (data) {
-                    that.words = [];
-                    angular.forEach(data, function (word) {
-                        that.words.push({ "word": word, "color": "black" });
-                    });
-                    that.showConfig = false;
-                    that.result = false;
+                    angular.forEach(data, function (word) { return _this.words.push({ "word": word, "color": "black" }); });
+                    _this.showConfig = false;
+                    _this.result = false;
                 });
             };
             WordsController.prototype.DisplayResult = function () {

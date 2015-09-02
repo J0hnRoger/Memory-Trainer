@@ -8,28 +8,30 @@ namespace app.words {
      controls : {}
     }
     
+    
     // Generate a chronometer.
     // Usage:
     //  <chrono duration="vm.duration" controls="vm.chrono" finish="vm.DisplayResult()"/>
     // Creates:
     //  <chrono duration="vm.duration" controls="vm.chrono" finish="vm.DisplayResult()"/>
-    Chrono.$inject = ['$interval', 'logger'];
-    function Chrono ($interval : ng.IIntervalService, logger : blocks.logger.Logger) : ng.IDirective {
-        var directive = <ng.IDirective> {
-            scope: {
+    export class ChronoDirective implements ng.IDirective {
+        
+        constructor(private $interval: ng.IIntervalService, private logger : blocks.logger.Logger) {}
+
+        //Directive Properties
+        template:string = '<h1>{{duration}}"<h1>';
+        restrict:string = 'EA';
+        scope:{} = {
                 'duration': '=',
                 'finish': '&',
                 'controls': '='
-            },
-            link : link,
-            template: '<h1>{{duration}}"<h1>',
-            restrict: 'EA'
-        };
-        
-        function link(scope : IChronoScope, element : ng.IAugmentedJQuery, attrs : ng.IAttributes ) : void {
+            };
+        //Methods
+        link = (scope : IChronoScope, element : ng.IAugmentedJQuery, attrs : ng.IAttributes) =>  {
             var stop : ng.IPromise<any>,
                 initialDuration = scope.duration;
-            
+                var $interval = this.$interval;
+                
             scope.controls = {
                 start : start,
                 stop : stop,
@@ -37,17 +39,17 @@ namespace app.words {
             }
             
             function start(){
-                stop = $interval(():void => {
-                            scope.duration = scope.duration - 1;
-                            if (scope.duration == 0){
-                                    $interval.cancel(stop);
-                                    if (angular.isDefined(scope.finish))
-                                        scope.finish();
-                            }
-                        }, 1000);
+                stop = $interval(() => {
+                        scope.duration = scope.duration - 1;
+                        if (scope.duration == 0){
+                                $interval.cancel(stop);
+                                if (angular.isDefined(scope.finish))
+                                    scope.finish();
+                        }
+                    }, 1000);
             }
             
-            function stop(){
+            function stopTimer(){
                 if(angular.isDefined(stop)) {
                     $interval.cancel(stop);
                     stop = undefined;
@@ -55,14 +57,21 @@ namespace app.words {
             }
             
             function reset (){
-             scope.duration = initialDuration;
+                scope.duration = initialDuration;
             }
-        }
+        };
         
-        return directive; 
-    } 
+        //Complet Syntax - factory static retourn a fonction. This allows to use annotation injection :  $inject on dependances.
+        static factory() : ng.IDirectiveFactory {
+            var directive : ng.IDirectiveFactory = function ($interval:ng.IIntervalService, logger : blocks.logger.Logger) {
+                  return new ChronoDirective($interval, logger);
+            }
+            directive.$inject = ['$interval', 'logger'];
+            return directive;
+        }
+    }; 
 
     angular
         .module('app.widgets')
-        .directive('chrono', Chrono);
+        .directive('chrono', ChronoDirective.factory());
 }

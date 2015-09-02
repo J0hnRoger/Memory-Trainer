@@ -9,6 +9,7 @@ namespace app.words {
         SetRandomWords : (nbWord : number) => void;
         showConfig : boolean;
         score : number;
+        chrono : app.words.ChronoDirective
 	}
     
     export class WordsController implements IExercice {
@@ -21,21 +22,19 @@ namespace app.words {
         finish :boolean = false;
         result:boolean = false;
         score:number = 0;
+        chrono : app.words.ChronoDirective;
          
         static $inject: Array<string> = ['logger', 'wordsGeneratorService'];
         constructor(private logger: blocks.logger.Logger, private wordsGenerator : app.words.WordsGeneratorService ) {}
         
         //Methods
         SetRandomWords(){
-            var that = this;
+            this.words = [];
             this.wordsGenerator.getRandomWords(this.nbElement)
-                .then(function (data : string[] ){
-                    that.words= [];
-                    angular.forEach(data, function(word){
-                        that.words.push({"word" : word, "color" : "black"});
-                    })
-                    that.showConfig = false;
-                    that.result = false;
+                .then((data : string[] ) => {
+                    angular.forEach(data, (word) => this.words.push({"word" : word, "color" : "black"}));
+                    this.showConfig = false;
+                    this.result = false;
                 });
         }
         
